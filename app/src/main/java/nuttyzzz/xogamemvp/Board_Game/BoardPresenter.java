@@ -8,14 +8,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
-
 import nuttyzzz.xogamemvp.R;
-
-/**
- * Created by dhero on 10/19/2017.
- */
 
 public class BoardPresenter implements BoardPresenterIF, BoardPresenterIF.CheckTheWinner {
 
@@ -86,7 +79,7 @@ public class BoardPresenter implements BoardPresenterIF, BoardPresenterIF.CheckT
 
     @Override
     public boolean onDraw(int countDraw) {
-        if (countDraw == 8) {
+        if (countDraw == 8){
             return true;
         }
         return false;

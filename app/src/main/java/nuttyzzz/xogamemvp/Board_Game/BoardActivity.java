@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.daimajia.androidanimations.library.Techniques;
@@ -15,11 +16,14 @@ import nuttyzzz.xogamemvp.R;
 public class BoardActivity extends AppCompatActivity implements BoardView,View.OnClickListener{
     private Dialog mDialog;
     private BoardPresenter presenter;
+    private YoYo.YoYoString animationPlayer1,animationPlayer2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
+
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         presenter = new BoardPresenter(this,getApplicationContext());
     }
@@ -67,8 +71,6 @@ public class BoardActivity extends AppCompatActivity implements BoardView,View.O
         YoYo.with(Techniques.BounceIn).playOn(view);
     }
 
-    private YoYo.YoYoString animationPlayer1,animationPlayer2;
-
     @Override
     public void setAnimationPlayer(int player) {
         if (player == 1){
@@ -82,4 +84,5 @@ public class BoardActivity extends AppCompatActivity implements BoardView,View.O
         }
         (findViewById(R.id.player2)).setRotation(180);
     }
+
 }
