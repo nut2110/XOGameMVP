@@ -8,6 +8,9 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 import nuttyzzz.xogamemvp.R;
 
 /**
@@ -28,7 +31,6 @@ public class BoardPresenter implements BoardPresenterIF, BoardPresenterIF.CheckT
         this.boardView = boardView;
         this.context = context;
         setupGame();
-
     }
 
     @Override
@@ -45,6 +47,8 @@ public class BoardPresenter implements BoardPresenterIF, BoardPresenterIF.CheckT
                 boardPlay[markPosition] = 2;
                 player = 1;
             }
+            boardView.setAnimationPlayer(player);
+            boardView.setAnimationPicker(view);
             if (onWinner() || onDraw(countDraw)) {
                 boardView.showDialog(setupDialog(view));
             }
@@ -100,6 +104,7 @@ public class BoardPresenter implements BoardPresenterIF, BoardPresenterIF.CheckT
         boardPlay = new Integer[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
         winChk = new Integer[][]{{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, {0, 4, 8}, {2, 4, 6}};
         boardView.removeImage();
+        boardView.setAnimationPlayer(player);
     }
 
     @Override
